@@ -185,13 +185,25 @@ namespace FinalProject.Controllers
             return random.Next(0, 101);
         }
 
+        static bool ShotConfirm(int shot)
+        {
+
+            int x = Generator();
+
+            if (x >= shot)
+            {
+                return false;
+            }
+            return true;
+        }
+
         static bool StealBlockConfirm(int offense, int defense)
         {
             int x = Generator();
 
             if (offense > defense)
             {
-                if (x + 5 > offense)
+                if (x + 5 >= offense)
                 {
                     return false;
                 }
@@ -200,7 +212,7 @@ namespace FinalProject.Controllers
                     return true;
                 }
             }
-            else if (defense > offense)
+            else if (defense >= offense)
             {
                 if (x - 5 > defense)
                 {
