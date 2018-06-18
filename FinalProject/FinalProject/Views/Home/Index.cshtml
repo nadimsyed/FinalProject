@@ -45,3 +45,40 @@
 <h2>Paint: @ViewBag.PaintWH</h2>
 <h2>Steal: @ViewBag.StealWH</h2>
 <h2>Block: @ViewBag.BlockWH</h2>
+
+
+<form action="~/Home/SkillPoint/" method="post">
+    Skill Points to Distribute: 100<br />
+
+    ThreePoint %: <input type="number" id="ThreePointPerc" name="ThreePoint" min="@ViewBag.ThreePointWH" onchange="ThreePoint()"/><br />
+
+    FieldGoal %:<input type="number" id="FieldGoatPerc" name="FieldGoat" min="@ViewBag.FieldGoalWH" /><br />
+
+    Paint %:<input type="number" id="PaintPerc" name="Paint" min="@ViewBag.PaintWH" /><br />
+
+    Steal %:<input type="number" id="StealPerc" name="Steal" min="@ViewBag.StealWH" /><br />
+
+    Block %:<input type="number" id="BlockPerc" name="Block" min="@ViewBag.BlockWH" /><br />
+
+    Submit: <input type="submit" name="submit" value="Submit SkillPoint Distribution" onclick="return Check()" /><br />
+</form>
+<script>
+    function Check() {
+        @*var x = parseInt(@Session["SkillPoints"].ToString())*@
+        var a = parseInt( document.getElementById("ThreePointPerc").value ) - @ViewBag.ThreePointWH;
+        var b = parseInt( document.getElementById("FieldGoatPerc").value ) - @ViewBag.FieldGoalWH;
+        var c = parseInt( document.getElementById("PaintPerc").value ) - @ViewBag.PaintWH;
+        var d = parseInt( document.getElementById("StealPerc").value ) - @ViewBag.StealWH;
+        var e = parseInt( document.getElementById("BlockPerc").value ) - @ViewBag.BlockWH;
+        if ((100 - (a +b+c+d+e)) == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+    
+
+
+</script>

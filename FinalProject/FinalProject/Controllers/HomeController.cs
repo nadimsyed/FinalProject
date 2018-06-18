@@ -137,6 +137,9 @@ namespace FinalProject.Controllers
                 ViewBag.StealWH = SDx + SDy;
                 ViewBag.BlockWH = Dx + Dy;
 
+                //Session["SkillPoints"] = 100;
+
+
             }
             catch (Exception e)
             {
@@ -148,9 +151,8 @@ namespace FinalProject.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult SkillPoint(int ThreePoint, int FieldGoat, int Paint, int Steal, int Block)
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
