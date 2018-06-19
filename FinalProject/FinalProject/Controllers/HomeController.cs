@@ -157,10 +157,131 @@ namespace FinalProject.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult CreatePlayerStart()
         {
-            ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult CreatePlayer(string CharName, int? CharHeight, int? CharWeight)
+        {
+            Random random = new Random();
+
+
+            int z = WeightReturn((int)CharWeight);
+
+            ViewBag.Weight = z;
+
+            int SA2 = WeightToSA(z);
+            int A2 = WeightToA(z);
+            int S2 = WeightToS(z);
+            int SD2 = (WeightToSA(z)) / 2;
+            int D2 = (WeightToA(z)) / 2;
+
+            int SDx = random.Next(SD2 - 2, SD2 + 6);
+            int Dx = random.Next(D2 - 2, D2 + 6);
+
+
+            ViewBag.ThreePointW = SA2;
+            ViewBag.FieldGoalW = A2;
+            ViewBag.PaintW = S2;
+            ViewBag.StealW = SDx;
+            ViewBag.BlockW = Dx;
+
+            int a = HeightReturn((int)CharHeight);
+
+            ViewBag.Height = a;
+
+            int SA3 = HeightToSA(a);
+            int A3 = HeightToA(a);
+            int S3 = HeightToS(a);
+            int SD3 = (HeightToSA(a)) / 2;
+            int D3 = (HeightToA(a)) / 2;
+
+            int SDy = random.Next(SD3 - 2, SD3 + 4);
+            int Dy = random.Next(D3 - 2, D3 + 4);
+
+
+            ViewBag.ThreePointH = SA3;
+            ViewBag.FieldGoalH = A3;
+            ViewBag.PaintH = S3;
+            ViewBag.StealH = SDy;
+            ViewBag.BlockH = Dy;
+
+            ViewBag.ThreePointWH = SA2 + SA3;
+            ViewBag.FieldGoalWH = A2 + A3;
+            ViewBag.PaintWH = S2 + S3;
+            ViewBag.StealWH = SDx + SDy;
+            ViewBag.BlockWH = Dx + Dy;
+
+            return View();
+        }
+
+        //Might have to pass in CharName, CharHeight, CharWeight from previous action to this action to make the character in database
+        public ActionResult SuccessfullyCreatedChar(int ThreePoint, int FieldGoat, int Paint, int Steal, int Block)
+        {
+
+            return View();
+        }
+
+        public ActionResult PokeJam()
+        {
+            return View();
+        }
+        
+        public ActionResult Rules()
+        {
+            return View();
+        }
+
+        public ActionResult ViewStats()
+        {
+            return View();
+        }
+
+        public ActionResult SinglePlayer()
+        {
+            return View();
+        }
+
+        public ActionResult Tournament()
+        {
+            return View();
+        }
+
+        public ActionResult Tier1()
+        {
+            return View();
+        }
+
+        public ActionResult Tier2()
+        {
+            return View();
+        }
+
+        public ActionResult Tier3()
+        {
+            return View();
+        }
+
+        public ActionResult Tier4()
+        {
+            return View();
+        }
+
+        public ActionResult Tier5()
+        {
+            return View();
+        }
+
+        public ActionResult GamePlay()
+        {
+            return View();
+        }
+
+        public ActionResult PlayConclusion(string shot)
+        {
+            ViewBag.Shot = shot;
             return View();
         }
 
@@ -190,7 +311,7 @@ namespace FinalProject.Controllers
 
             int x = Generator();
 
-            if (x >= shot)
+            if (x > shot)
             {
                 return false;
             }
